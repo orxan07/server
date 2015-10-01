@@ -1,0 +1,31 @@
+{
+  "name": "node-todo",
+  "version": "0.0.1",
+  "description": "Simple todo application.",
+  "engines": {
+    "node": "3.3.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "test": "mocha",
+    "postinstall": "bower install"
+  },
+  "main": "server.js",
+  "author": "orxan@rehimli.info",
+  "dependencies": {
+    "angular": "^1.4.6",
+    "angular-resource": "^1.4.6",
+    "angular-ui-router": "^0.2.15",
+    "angularjs": "0.0.1",
+    "body-parser": "~1.4.3",
+    "bootstrap": "^3.3.5",
+    "bower": "^1.5.3",
+    "express": "~4.6.1",
+    "jquery": "^2.1.4",
+    "mathjax": "^2.5.1",
+    "method-override": "~2.1.1",
+    "mongoose": "~3.8.13",
+    "morgan": "~1.1.1",
+    "serve-favicon": "^2.3.0"
+  }
+}
