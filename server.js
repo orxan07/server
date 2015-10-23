@@ -9,6 +9,28 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
 
+//logger
+var bunyan      = require('bunyan');
+var bunyanTcp   = require('bunyan-logstash-tcp');
+
+var log = bunyan.createLogger({
+    name: 'myLogger',
+    serializers: bunyan.stdSerializers,
+    streams: [
+        {
+            level: 'debug',
+            type: 'raw',
+            stream: (bunyanTcp.createStream({
+                host: '172.17.42.1',
+                port: 9998,
+                max_connect_retries: -1, // Don't give up on reconnecting
+                retry_interval: 1000     // Wait 1s between reconnect attempts
+            }))
+        }]
+});
+
+log.info("Orxans log by bunyan from docker");
+
 // configuration ===============================================================
 mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
 
