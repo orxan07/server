@@ -8,7 +8,7 @@ var morgan   = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
-var demo = require('eu-demos');
+var demo = require('eu-demo');
 
 demo.printLog();
 
