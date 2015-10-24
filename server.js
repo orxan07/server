@@ -8,6 +8,33 @@ var morgan   = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var favicon = require('serve-favicon');
+var demo = require('eu-demo');
+
+demo.printLog();
+
+var bunyan = require('bunyan'),
+    bunyantcp = require('bunyan-logstash-tcp');
+
+var log = bunyan.createLogger({
+    name: 'example',
+    serializers: bunyan.stdSerializers,
+    streams: [{
+        level: 'debug',
+        stream: process.stdout
+    },{
+        level: 'debug',
+        type: "raw",
+        stream: bunyantcp.createStream({
+            host: '55.55.55.5',
+            port: 5000
+        })
+    }],
+    level: 'debug'
+});
+
+log.debug('Salam Orxan debug');
+log.error('Sagol Orxan error');
+
 
 //logger
 var bunyan      = require('bunyan');
@@ -37,8 +64,6 @@ mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
 app.use(express.static(__dirname + '/public')); 		// set the static files location /public/img will be /img for users
 app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use('/bower', express.static(__dirname + '/bower_components/'));
-
-app.use('/plotly', express.static(__dirname + '/plotly/'));
 
 app.use(morgan('dev')); // log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'})); // parse application/x-www-form-urlencoded

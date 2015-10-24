@@ -1,5 +1,5 @@
 {
-  "name": "node-todo",
+  "name": "nscale-server",
   "version": "0.0.1",
   "description": "Simple todo application.",
   "engines": {
@@ -9,12 +9,13 @@
   "author": "orxan@rehimli.info",
   "dependencies": {
     "body-parser": "~1.4.3",
+    "bunyan": "^1.5.1",
+    "bunyan-logstash-tcp": "^0.3.4",
     "express": "~4.6.1",
     "method-override": "~2.1.1",
     "mongoose": "~3.8.13",
     "morgan": "~1.1.1",
     "serve-favicon": "^2.3.0",
-    "bunyan":"",
-    "bunyan-logstash-tcp":""
+    "eu-demo":"1.0.x"
   }
 }
