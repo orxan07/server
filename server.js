@@ -12,52 +12,6 @@ var demo = require('eu-demo');
 
 demo.printLog();
 
-var bunyan = require('bunyan'),
-    bunyantcp = require('bunyan-logstash-tcp');
-
-var log = bunyan.createLogger({
-    name: 'example',
-    serializers: bunyan.stdSerializers,
-    streams: [{
-        level: 'debug',
-        stream: process.stdout
-    },{
-        level: 'debug',
-        type: "raw",
-        stream: bunyantcp.createStream({
-            host: '55.55.55.5',
-            port: 5000
-        })
-    }],
-    level: 'debug'
-});
-
-log.debug('Salam Orxan debug');
-log.error('Sagol Orxan error');
-
-
-//logger
-var bunyan      = require('bunyan');
-var bunyanTcp   = require('bunyan-logstash-tcp');
-
-var log = bunyan.createLogger({
-    name: 'myLogger',
-    serializers: bunyan.stdSerializers,
-    streams: [
-        {
-            level: 'debug',
-            type: 'raw',
-            stream: (bunyanTcp.createStream({
-                host: '172.17.42.1',
-                port: 9998,
-                max_connect_retries: -1, // Don't give up on reconnecting
-                retry_interval: 1000     // Wait 1s between reconnect attempts
-            }))
-        }]
-});
-
-log.info("Orxans log by bunyan from docker");
-
 // configuration ===============================================================
 mongoose.connect(database.url); 	// connect to mongoDB database on modulus.io
 
